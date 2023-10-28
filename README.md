@@ -34,7 +34,7 @@ The project is written in C, according to the Norm (<<LINK>>), and it is compile
 
 ## Structure:
     include/           <- header file
-    libft/              <- auxiliary submodule ([libft](https://github.com/Orpheus-3145/Libft))
+    libft/              <- auxiliary submodule [libft](https://github.com/Orpheus-3145/Libft)
     objects/           <- object files
     sources/           <- source C files
             init.c    <- initialization of structs for container and philosophers

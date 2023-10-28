@@ -6,7 +6,7 @@
 #    By: fra <fra@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/10/28 21:36:34 by fra           #+#    #+#                  #
-#    Updated: 2023/10/28 21:36:34 by fra           ########   odam.nl          #
+#    Updated: 2023/10/28 22:33:35 by fra           ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJECTS := $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(SOURCES:.c=.o))
 CC  := cc
 IFLAGS := -Iinclude -I$(LIBFT_DIR)/include
 CFLAGS = -Wall -Wextra -Werror
-# CFLAGS += -g3 -fsanitize=address
+CFLAGS += -g3 -fsanitize=address
 LFLAGS := -Llibft -lft -lreadline -lhistory 
 
 ifeq ($(shell uname -s),Darwin)			# Mac
