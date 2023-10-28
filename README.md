@@ -41,10 +41,10 @@ The IO redirections are treated as follows:
 # Approach
 The whole workload was splitted into two main parts:
 1. **parsing**: (in which the undersigned was involved) it consists of refining the input throught the following steps
-	- parser: a string is read for the input prompt (input operation realy on readline C-library) and also the sintax is checked;
-	- expander: variable expansion (*variables inside single quotes are not expanded*)
-	- tokenizer: the imput is splitted into single commands (if there are pipes) and then into single tokens
-	- lexer: the tokens are classified into categories, such as *main command*, *options*, *redirections*, ...
+	- **parser**: a string is read for the input prompt (input operation realy on readline C-library) and also the sintax is checked;
+	- **expander**: variable expansion (*variables inside single quotes are not expanded*)
+	- **tokenizer**: the imput is splitted into single commands (if there are pipes) and then into single tokens
+	- **lexer**: the tokens are classified into categories, such as *main command*, *options*, *redirections*, ...
 
 # Code
 The project is written in C, according to the Norm (<<LINK>>), and it is compiled with the flags:
@@ -56,7 +56,7 @@ The project is written in C, according to the Norm (<<LINK>>), and it is compile
 **N.B.** sometimes (inside Linux environment especially) the program might fail when exited, because of some leaks caused by the C function readline().
 
 ## Compiling and running:
-The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft)) for low level C operations
+The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft)) for low level C operations.
 1. `make`    creates the executable;
 1. `make clean`    removes object files;
 1. `make fclean`    calls `make clean` and removes the executable;
@@ -70,7 +70,7 @@ The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft
 		builtins/		<- builtins commands
 		checker/		<- checks to perform on the input sequence command
 		env/			<- handling of environment variables
-		error_handling/	<- errors and destructors
+		error_handling/		<- errors and destructors
 		exec/			<- executor part (after parser-lexer-expander)
 		here_doc/		<- handling the here_doc (multiline input redirection)
 		lexer/			<- last phase of the parsing the command is tokenized
