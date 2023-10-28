@@ -33,15 +33,15 @@ The project is written in C, according to the Norm (<<LINK>>), and it is compile
 1. `make re`    calls `make fclean` and then `make`;
 
 ## Structure:
-include/           <- header file
-libft/             <- auxiliary submodule [libft](https://github.com/Orpheus-3145/Libft)
-objects/           <- object files
-sources/           <- source C files
-        init.c    <- initialization of structs for container and philosophers
+- include/           <- header file
+- libft/             <- auxiliary submodule [libft](https://github.com/Orpheus-3145/Libft)
+- objects/           <- object files
+- sources/           <- source C files
+        <!-- init.c    <- initialization of structs for container and philosophers
         main.c    <- main program, check-parse-simulation
         mutex.c   <- wrappers to access protected variables
         threads.c <- thread functions
-        tools.c   <- non-specific functions
+        tools.c   <- non-specific functions -->
 
 # References
 - 42 project: [minishell](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf)
