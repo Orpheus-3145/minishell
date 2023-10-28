@@ -7,21 +7,21 @@ Minishell was a project developed by my team-partner [ys_zm](https://github.com/
 
 # Overview
 Substantially minishell behaves as Bash but with the following semplifications:
-## sintax
-Unclosed quotes are treated as sintax-errors
-characters *\\* and *;* are not considered meta-characters and have no consequence
-operations *&&* and *||* are not implemented
 
-## signals
+## 1. sintax
+Unclosed quotes are treated as sintax-errors
+characters **\\** and **;** are not considered meta-characters and have no consequence
+operations **&&** and **||** are not implemented
+
+## 2. signals
 the signals interally implemented are:
 - SIG_INT (CTRL C)  -- interrupts the running command prints an empty prompt
 - SIG_INT (CTRL C)  -- interrupts the running command prints an empty prompt
-- EOF (CTRL D)  -- exits the shell
+- EOF (CTRL D)      -- exits the shell
 
-
-
-
-
+## 3. builtins
+Some commands was directly implemented in the shell at C level (a.k.a. builtins), the others a run as usual looking inside the **$PATH** variable.
+The Builtins are:  **echo** (only option -n), **cd** (with only a relative or absolute path), **pwd** (no options), **export** (no options), **unset** (no options), **env** (no options or arguments), **exit** (no options)
 # Approach
 
 
