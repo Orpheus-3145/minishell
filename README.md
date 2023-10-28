@@ -6,9 +6,9 @@ Minishell was a project developed by my team-partner [ys_zm](https://github.com/
 
 
 # Overview
-Substantially minishell behaves as Bash but with the following semplifications:
-
 See the [subject](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf) of the project for the specific guidelines.
+
+Substantially minishell behaves as Bash but with the following semplifications:
 
 ## 1. sintax
 Unclosed quotes are treated as sintax-errors
@@ -23,7 +23,15 @@ the signals interally implemented are:
 
 ## 3. builtins
 Some commands was directly implemented in the shell at C level (a.k.a. builtins), the others are executed as usual looking for the executable inside the **$PATH** variable.
-The Builtins are:  **echo** (only option -n), **cd** (with only a relative or absolute path), **pwd** (no options), **export** (no options), **unset** (no options), **env** (no options or arguments), **exit** (no options); with this commands only the options inside the parenthesis are admitted.
+The Builtins are:  
+- **echo** (only option -n)
+- **cd** (with only a relative or absolute path)
+- **pwd** (no options)
+- **export** (no options)
+- **unset** (no options)
+- **env** (no options or arguments)
+- **exit** (no options)
+with this commands only the options inside the parenthesis are admitted.
 
 ## 4. redirections
 The IO redirections are treated as follows:
