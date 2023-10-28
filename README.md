@@ -10,9 +10,9 @@ See the [subject](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf) of the p
 Substantially minishell behaves as Bash but with the following semplifications:
 
 ## 1. sintax
-Unclosed quotes are treated as sintax-errors
-characters **\\** and **;** are not considered meta-characters and have no consequence
-operations **&&** and **||** are not implemented
+- Unclosed quotes are treated as sintax-errors
+- characters **\\** and **;** are not considered meta-characters and have no consequence
+- operations **&&** and **||** are not implemented
 
 ## 2. signals
 the signals interally implemented are:
@@ -33,18 +33,18 @@ The builtins are: (only the options inside the parenthesis are admitted)
 
 ## 4. redirections
 The IO redirections are treated as follows:
-- **<** *single input redirection* 
-- **>** *single output redirection* 
-- **<<** *double input redirection* or here_doc mode
-- **>>** *double output redirection* or append mode
+- **<**   --  *single input redirection* 
+- **>**   --  *single output redirection* 
+- **<<**  --  *double input redirection* or here_doc mode
+- **>>**  --  *double output redirection* or append mode
 
 # Approach
 The whole workload was splitted into two main parts:
 1. **parsing**: (in which the undersigned was involved) it consists of refining the input throught the following steps
-- parser: a string is read for the input prompt (input operation realy on readline C-library) and also the sintax is checked;
-- expander: variable expansion (*variables inside single quotes are not expanded*)
-- tokenizer: the imput is splitted into single commands (if there are pipes) and then into single tokens
-- lexer: the tokens are classified into categories, such as *main command*, *options*, *redirections*, ...
+	- parser: a string is read for the input prompt (input operation realy on readline C-library) and also the sintax is checked;
+	- expander: variable expansion (*variables inside single quotes are not expanded*)
+	- tokenizer: the imput is splitted into single commands (if there are pipes) and then into single tokens
+	- lexer: the tokens are classified into categories, such as *main command*, *options*, *redirections*, ...
 
 # Code
 The project is written in C, according to the Norm (<<LINK>>), and it is compiled with the flags:
@@ -53,7 +53,7 @@ The project is written in C, according to the Norm (<<LINK>>), and it is compile
 - -Wall
 - -fsanitize=address
 
-**N.B.** sometimes (inside Linux environment especially) the program might fail when exited, because of some leaks caused by the C function readline()
+**N.B.** sometimes (inside Linux environment especially) the program might fail when exited, because of some leaks caused by the C function readline().
 
 ## Compiling and running:
 The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft)) for low level C operations
@@ -67,16 +67,16 @@ The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft
 	libft/             <- auxiliary submodule 
 	objects/           <- object files
 	sources/           <- source C files
-			builtins/		<- builtins commands
-			checker/		<- checks to perform on the input sequence command
-			env/			<- handling of environment variables
-			error_handling/	<- errors and destructors
-			exec/			<- executor part (after parser-lexer-expander)
-			here_doc/		<- handling the here_doc (multiline input redirection)
-			lexer/			<- last phase of the parsing the command is tokenized
-			main/			<- main function and signal handling
-			parser/			<- first phase: input storing, checks and variable expansion
-			utils/			<- generic use functions
+		builtins/		<- builtins commands
+		checker/		<- checks to perform on the input sequence command
+		env/			<- handling of environment variables
+		error_handling/	<- errors and destructors
+		exec/			<- executor part (after parser-lexer-expander)
+		here_doc/		<- handling the here_doc (multiline input redirection)
+		lexer/			<- last phase of the parsing the command is tokenized
+		main/			<- main function and signal handling
+		parser/			<- first phase: input storing, checks and variable expansion
+		utils/			<- generic use functions
 
 # References
 - 42 project: [minishell](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf)
