@@ -2,7 +2,7 @@
 The idea of the project is to create a new shell, able to run commands, manage environment variables, ...
 This shell is directly inspired to the Bash shell and behaves like it as much as possibile, specifically the one used on UNIX (OS X).
 
-Minishell was a project developed by me and my team-partner [ys_zm](https://github.com/ys-zm) ( <--- many thanks for the cooperation!).
+Minishell was a project developed by my team-partner [ys_zm](https://github.com/ys-zm) ( <--- many thanks for the cooperation!) and me.
 
 
 # Overview
@@ -17,6 +17,10 @@ the signals interally implemented are:
 - SIG_INT (CTRL C)  -- interrupts the running command prints an empty prompt
 - SIG_INT (CTRL C)  -- interrupts the running command prints an empty prompt
 - EOF (CTRL D)  -- exits the shell
+
+
+
+
 
 # Approach
 
@@ -40,11 +44,11 @@ The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft
     libft/             <- auxiliary submodule 
     objects/           <- object files
     sources/           <- source C files
-        <!-- init.c    <- initialization of structs for container and philosophers
-        main.c    <- main program, check-parse-simulation
-        mutex.c   <- wrappers to access protected variables
-        threads.c <- thread functions
-        tools.c   <- non-specific functions -->
+            init.c    <- initialization of structs for container and philosophers
+            main.c    <- main program, check-parse-simulation
+            mutex.c   <- wrappers to access protected variables
+            threads.c <- thread functions
+            tools.c   <- non-specific functions
 
 # References
 - 42 project: [minishell](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf)
