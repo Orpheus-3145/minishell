@@ -19,6 +19,8 @@ the signals interally implemented are:
 - EOF (CTRL D)  -- exits the shell
 
 # Approach
+
+
 # Code
 The project is written in C, according to the Norm (<<LINK>>), and it is compiled with the flags:
 - -Werror
@@ -27,16 +29,17 @@ The project is written in C, according to the Norm (<<LINK>>), and it is compile
 - -fsanitize=address
 
 ## Compiling and running:
+The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft)) for low level C operations
 1. `make`    creates the executable;
 1. `make clean`    removes object files;
 1. `make fclean`    calls `make clean` and removes the executable;
 1. `make re`    calls `make fclean` and then `make`;
 
 ## Structure:
-- include/           <- header file
-- libft/             <- auxiliary submodule [libft](https://github.com/Orpheus-3145/Libft)
-- objects/           <- object files
-- sources/           <- source C files
+    include/           <- header file
+    libft/             <- auxiliary submodule 
+    objects/           <- object files
+    sources/           <- source C files
         <!-- init.c    <- initialization of structs for container and philosophers
         main.c    <- main program, check-parse-simulation
         mutex.c   <- wrappers to access protected variables
