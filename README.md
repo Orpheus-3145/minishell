@@ -56,7 +56,7 @@ The project is written in C, according to the [Norm](https://meta.intra.42.fr/ar
 ## Compiling and running:
 The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft)) for low level C operations.
 1. `make`    creates the executable;
-1. `make RUN`    creates the executable and runs it;
+1. `make run`    calls `make` and runs the executable;
 1. `make clean`    removes object files;
 1. `make fclean`    calls `make clean` and removes the executable;
 1. `make re`    calls `make fclean` and then `make`;
@@ -79,4 +79,4 @@ The project relies on a submodule ([Libft](https://github.com/Orpheus-3145/Libft
 
 # References
 - 42 project: [minishell](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf)
-- By: Francesco Aru ([GithHub](https://github.com/Orpheus-3145)), [ys_zm](https://github.com/ys-zm), francesco.aru25@gmail.com, intra42/slack nickname: @faru, Codam, Amsterdam
+- By: Francesco Aru ([GithHub](https://github.com/Orpheus-3145)) and [ys_zm](https://github.com/ys-zm), francesco.aru25@gmail.com, intra42/slack nickname: @faru, Codam, Amsterdam
