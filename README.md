@@ -1,5 +1,5 @@
 # Minishell
-The idea of the project is to create a new shell, able to run commands, manage environment variables, ...
+The idea of the project is to create a new shell, able to execute commands, manage environment variables, ...
 This shell is directly inspired to the Bash shell and behaves like it as much as possibile, specifically the one used on UNIX (OS X).
 
 Minishell was a project developed by my team-partner [ys_zm](https://github.com/ys-zm) ( <--- many thanks for the cooperation!) and me.
@@ -7,6 +7,8 @@ Minishell was a project developed by my team-partner [ys_zm](https://github.com/
 
 # Overview
 Substantially minishell behaves as Bash but with the following semplifications:
+
+See the [subject](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf) of the project for the specific guidelines.
 
 ## 1. sintax
 Unclosed quotes are treated as sintax-errors
@@ -20,8 +22,16 @@ the signals interally implemented are:
 - EOF (CTRL D)      -- exits the shell
 
 ## 3. builtins
-Some commands was directly implemented in the shell at C level (a.k.a. builtins), the others a run as usual looking inside the **$PATH** variable.
-The Builtins are:  **echo** (only option -n), **cd** (with only a relative or absolute path), **pwd** (no options), **export** (no options), **unset** (no options), **env** (no options or arguments), **exit** (no options)
+Some commands was directly implemented in the shell at C level (a.k.a. builtins), the others are executed as usual looking for the executable inside the **$PATH** variable.
+The Builtins are:  **echo** (only option -n), **cd** (with only a relative or absolute path), **pwd** (no options), **export** (no options), **unset** (no options), **env** (no options or arguments), **exit** (no options); with this commands only the options inside the parenthesis are admitted.
+
+## 4. redirections
+The IO redirections are treated as follows:
+- **<** *single input redirection* 
+- **>** *single output redirection* 
+- **<<** *double input redirection* or here_doc mode
+- **>>** *double output redirection* or append mode
+
 # Approach
 
 
