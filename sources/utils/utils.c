@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/20 19:09:49 by fra           #+#    #+#                 */
-/*   Updated: 2023/09/21 12:43:38 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:04:14 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*remove_quotes(char *to_clear, bool free_string)
 			move_chars(cleaned_str, to_clear);
 	}
 	if (free_string == true)
-		ft_free(to_clear);
+		free(to_clear);
 	return (cleaned_str);
 }
 
@@ -65,15 +65,14 @@ char	*create_file_name(const char *fix_part, char *path_file, int32_t cnt)
 	if (char_cnt == NULL)
 		return (NULL);
 	file_name = ft_strjoin(path_file, char_cnt, (char *) fix_part, false);
-	ft_free(char_cnt);
+	free(char_cnt);
 	return (file_name);
 }
 
-bool	is_actual_file(char *file_name)
-{
-	if ((ft_strncmp(file_name, ".", 1) != 0) && \
-		(ft_strncmp(file_name, "..", 2) != 0))
-		return (true);
-	else
-		return (false);
-}
+// bool	is_actual_file(char *file_name)
+// {
+// 	if ((ft_strncmp(file_name, ".", 1) != 0) && (ft_strncmp(file_name, "..", 2) != 0))
+// 		return (true);
+// 	else
+// 		return (false);
+// }

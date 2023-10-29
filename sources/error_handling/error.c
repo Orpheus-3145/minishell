@@ -6,7 +6,7 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:14:36 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/09/21 12:26:28 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_free_all(t_var *mini)
 		ft_free_strings(mini->paths);
 	if (mini->env_arr)
 		ft_free_strings(mini->env_arr);
-	ft_free(mini->hd_path);
+	free(mini->hd_path);
 	ft_set_to_null(mini);
 }
 

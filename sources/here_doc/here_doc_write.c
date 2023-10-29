@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/19 17:46:55 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/28 21:44:28 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_cmd_status	del_here_doc(char **here_doc, t_cmd_status status)
 {
-	ft_free(*here_doc);
+	free(*here_doc);
 	*here_doc = ft_strdup("");
 	if (*here_doc == NULL)
 		status = CMD_MEM_ERR;
@@ -30,12 +30,12 @@ t_cmd_status	aquire_input_hd(char *del, char **here_doc)
 	{
 		status = ft_readline(&new_line, "> ", false);
 		if (status == CMD_MEM_ERR)
-			return (ft_free(*here_doc), status);
+			return (free(*here_doc), status);
 		else if (status == CMD_CTRL_D)
 			return (del_here_doc(here_doc, status));
 		else if (ft_strncmp(new_line, del, ft_strlen(del)) == 0)
 		{
-			ft_free(new_line);
+			free(new_line);
 			*here_doc = ft_append_char(*here_doc, '\n');
 			if (*here_doc == NULL)
 				status = CMD_MEM_ERR;
@@ -62,7 +62,7 @@ int32_t	open_and_expand(char **here_doc, int32_t cnt, bool expand, t_var *mini)
 		else
 			exit(CMD_FILE_ERR);
 	}
-	ft_free(file_name);
+	free(file_name);
 	if (expand)
 	{
 		if (expander(here_doc, mini->env_list, mini->status, false) \
@@ -91,15 +91,15 @@ void	write_here_doc(int cnt, char *del, t_var *mini)
 	status = aquire_input_hd(del, &here_doc);
 	if (status == CMD_MEM_ERR)
 	{
-		ft_free(del);
+		free(del);
 		exit(status);
 	}
 	fd = open_and_expand(&here_doc, cnt, exp_vars, mini);
 	if (write(fd, here_doc, ft_strlen(here_doc)) == -1)
 		status = CMD_FILE_ERR;
-	ft_free(del);
+	free(del);
 	close(fd);
-	ft_free(here_doc);
+	free(here_doc);
 	exit(status);
 }
 

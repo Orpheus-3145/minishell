@@ -6,14 +6,14 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:17:18 by fra           #+#    #+#                 */
-/*   Updated: 2023/07/11 16:54:54 by faru          ########   odam.nl         */
+/*   Updated: 2023/10/29 16:03:46 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
 
-// env/utils.c
+// env/env_utils.c
 int		ft_find_first_equals(char *env);
 
 bool	ft_key_rules(char c, int index);
@@ -25,7 +25,7 @@ int		ft_find_data_if_no_pos(t_var *mini, char *envp, char **key, char **v);
 t_env	*ft_create_node(t_var *mini, char *envp, int pos);
 
 // env/env_parsing.c
-void	ft_print_array(char **arr);
+// void	ft_print_array(char **arr);
 
 void	ft_free_prev(t_env *head);
 

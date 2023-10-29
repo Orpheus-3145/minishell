@@ -6,26 +6,26 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:06:07 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 12:42:39 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:03:38 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell/minishell.h"
 
-void	ft_print_array(char **arr)
-{
-	int	i;
+// void	ft_print_array(char **arr)
+// {
+// 	int	i;
 
-	i = 0;
-	if (!arr)
-		return ;
-	while (arr[i])
-	{
-		ft_putstr_fd(arr[i], 1);
-		ft_putstr_fd("\n", 1);
-		i++;
-	}
-}
+// 	i = 0;
+// 	if (!arr)
+// 		return ;
+// 	while (arr[i])
+// 	{
+// 		ft_putstr_fd(arr[i], 1);
+// 		ft_putstr_fd("\n", 1);
+// 		i++;
+// 	}
+// }
 
 void	ft_update_shell(t_env **env_list)
 {

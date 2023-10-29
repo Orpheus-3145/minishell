@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:39:02 by fra           #+#    #+#                 */
-/*   Updated: 2023/07/18 22:57:52 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_cmd_status	fill_words(t_cmd *cmd, t_list *tokens)
 			cmd->full_cmd[i] = remove_quotes(tokens->content, false);
 			if (cmd->full_cmd[i] == NULL)
 			{
-				ft_free(cmd->full_cmd);
+				free(cmd->full_cmd);
 				return (CMD_MEM_ERR);
 			}
 			i++;
@@ -92,8 +92,8 @@ t_cmd_status	\
 				continue ;
 			here_doc_file = create_file_name(HERE_DOC_FIX, hd, order);
 			if (here_doc_file == NULL)
-				return (ft_free(cmd->redirections), CMD_MEM_ERR);
-			ft_free(tokens->content);
+				return (free(cmd->redirections), CMD_MEM_ERR);
+			free(tokens->content);
 			tokens->content = here_doc_file;
 		}
 		tokens = tokens->next;
@@ -116,7 +116,7 @@ t_cmd_status	get_files(t_cmd *cmd, t_list *tokens)
 			tokens = tokens->next;
 			cmd->files[i] = remove_quotes(tokens->content, false);
 			if (cmd->files[i] == NULL)
-				return (ft_free(cmd->files), CMD_MEM_ERR);
+				return (free(cmd->files), CMD_MEM_ERR);
 			i++;
 		}
 		tokens = tokens->next;

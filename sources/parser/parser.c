@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 11:03:02 by faru          #+#    #+#                 */
-/*   Updated: 2023/07/08 20:45:55 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_cmd_status	ft_readline(char **buffer, const char *prompt, bool sin_check)
 	if (! new_string)
 		return (CMD_CTRL_D);
 	*buffer = ft_strdup(new_string);
-	ft_free(new_string);
+	free(new_string);
 	if (*buffer == NULL)
 		return (CMD_MEM_ERR);
 	else if (sin_check && (check_sintax(*buffer) == false))
@@ -63,7 +63,7 @@ t_cmd_status	aquire_input(char **input, t_var *mini)
 	{
 		status = handle_here_doc(buffer, &cnt, mini);
 		if ((status != CMD_OK) && (status != CMD_CTRL_C))
-			return (ft_free(buffer), ft_free(*input), status);
+			return (free(buffer), free(*input), status);
 		*input = ft_strjoin(*input, buffer, "\n", true);
 		if (*input == NULL)
 			return (CMD_MEM_ERR);

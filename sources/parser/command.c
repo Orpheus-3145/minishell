@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 01:18:26 by fra           #+#    #+#                 */
-/*   Updated: 2023/09/16 23:03:01 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:08:32 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**split_into_cmds(char *input)
 		if (input[j] == '\0')
 			break ;
 	}
-	ft_free(input);
+	free(input);
 	return (cmds);
 }
 
@@ -84,4 +84,22 @@ t_cmd_status	create_new_cmd(char *cmd_input, t_var *mini)
 	if (status != CMD_OK)
 		ft_free_cmd_arr(mini);
 	return (ft_free_double((void **) cmds, -1), status);
+}
+
+void	run_cmd(char *input, t_var *mini)
+{
+	t_cmd_status	status;
+
+	status = create_new_cmd(input, mini);
+	if (status == CMD_SIN_ERR)
+	{
+		ft_putstr_fd(MSG_SINTAX_ERROR, 2);
+		if (remove_here_docs(mini->hd_path) == false)
+			malloc_protect(mini);
+		ft_free_cmd_arr(mini);
+	}
+	else if (status == CMD_MEM_ERR)
+		malloc_protect(mini);
+	else
+		ft_exec(mini);
 }

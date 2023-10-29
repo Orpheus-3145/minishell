@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:16:54 by fra           #+#    #+#                 */
-/*   Updated: 2023/07/12 16:13:24 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 15:52:07 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	ft_del_node(t_env **env_list, char *key);
 int		ft_unset(t_var *mini, char **args);
 
 // Utils
-// utils.c
+// builtins_utils.c
 int		ft_strcmp(const char *s1, const char *s2);
 
 char	*ft_trip_join(char *str1, char *str2, char *str3);

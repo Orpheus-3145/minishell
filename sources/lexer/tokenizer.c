@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/27 17:20:39 by fra           #+#    #+#                 */
-/*   Updated: 2023/07/18 22:25:00 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:06:16 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_list	*tokenize(char *input)
 			new_token = ft_lstnew(new_word);
 			if (new_token == NULL)
 			{
-				ft_free(new_word);
+				free(new_word);
 				return (ft_lstclear(&tokens, ft_free));
 			}
 			ft_lstadd_back(&tokens, new_token);

@@ -6,7 +6,7 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:30:46 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/18 22:55:02 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_free_strings(char **arr)
 	i = 0;
 	while (arr && arr[i])
 	{
-		ft_free(arr[i]);
+		free(arr[i]);
 		i++;
 	}
-	ft_free(arr);
+	free(arr);
 	return (EXIT_SUCCESS);
 }
 
@@ -33,10 +33,10 @@ int	ft_free_pipes(int **pipes, int size)
 	i = 0;
 	while (i < size)
 	{
-		ft_free(pipes[i]);
+		free(pipes[i]);
 		i++;
 	}
-	ft_free(pipes);
+	free(pipes);
 	return (EXIT_SUCCESS);
 }
 
@@ -45,7 +45,7 @@ int	ft_free_cmd_struct(t_cmd *cmd)
 	if (cmd->full_cmd)
 		ft_free_strings(cmd->full_cmd);
 	if (cmd->n_redirect)
-		ft_free(cmd->redirections);
+		free(cmd->redirections);
 	if (cmd->files)
 		ft_free_strings(cmd->files);
 	return (EXIT_SUCCESS);
@@ -61,7 +61,7 @@ int	ft_free_cmd_arr(t_var *mini)
 		ft_free_cmd_struct(mini->cmd_data + i);
 		i++;
 	}
-	ft_free(mini->cmd_data);
+	free(mini->cmd_data);
 	mini->cmd_data = NULL;
 	mini->n_cmd = 0;
 	return (EXIT_SUCCESS);
@@ -79,10 +79,10 @@ int	ft_free_env_list(t_var *mini)
 	{
 		tmp = *env_list;
 		*env_list = (*env_list)->next;
-		ft_free(tmp->key);
-		ft_free(tmp->value);
-		ft_free(tmp);
+		free(tmp->key);
+		free(tmp->value);
+		free(tmp);
 	}
-	ft_free(env_list);
+	free(env_list);
 	return (EXIT_SUCCESS);
 }

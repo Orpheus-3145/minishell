@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:06:12 by fra           #+#    #+#                 */
-/*   Updated: 2023/09/21 13:00:18 by faru          ########   odam.nl         */
+/*   Updated: 2023/10/29 16:02:03 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ uint32_t		n_cmds(char *string);
 char			**split_into_cmds(char *input_cmd);
 
 t_cmd_status	create_new_cmd(char *cmd, t_var *depo);
+
+void			run_cmd(char *input, t_var *mini);
 
 // expander.c
 char			*expand_vars(char *input, t_env **env_vars, int exit_status);

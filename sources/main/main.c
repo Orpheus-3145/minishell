@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/04 02:32:32 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/28 21:43:06 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:08:44 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,10 @@ int	*g_exit_code;
 void	exit_shell(char *input)
 {
 	if (has_trailing_pipe(input) == true)
-		ft_putstr_fd("minishell: syntax error\n", 2);
+		ft_putstr_fd(MSG_SINTAX_ERROR, 2);
 	else
-		ft_putstr_fd("minishell: exit\n", 2);
-	ft_free(input);
-}
-
-void	run_cmd(char *input, t_var *mini)
-{
-	t_cmd_status	status;
-
-	status = create_new_cmd(input, mini);
-	if (status == CMD_SIN_ERR)
-	{
-		ft_putstr_fd("minishell: syntax error\n", 2);
-		if (remove_here_docs(mini->hd_path) == false)
-			malloc_protect(mini);
-		ft_free_cmd_arr(mini);
-	}
-	else if (status == CMD_MEM_ERR)
-		malloc_protect(mini);
-	else
-		ft_exec(mini);
+		ft_putstr_fd(MSG_EXIT, 2);
+	free(input);
 }
 
 void	main_loop(t_var *mini)
@@ -50,8 +32,9 @@ void	main_loop(t_var *mini)
 	{
 		input = NULL;
 		status = aquire_input(&input, mini);
-		if ((status == CMD_MEM_ERR) || (status == CMD_FILE_ERR)
-			|| (status == CMD_PROC_ERR))
+		if ((status == CMD_MEM_ERR) || 
+			(status == CMD_FILE_ERR) ||
+			(status == CMD_PROC_ERR))
 			malloc_protect(mini);
 		else if (status == CMD_CTRL_D)
 		{
@@ -63,9 +46,9 @@ void	main_loop(t_var *mini)
 		if (status == CMD_OK)
 			run_cmd(input, mini);
 		else
-			ft_free(input);
+			free(input);
 		if (status == CMD_SIN_ERR)
-			ft_putstr_fd("minishell: syntax error\n", 2);
+			ft_putstr_fd(MSG_SINTAX_ERROR, 2);
 	}
 	clear_history();
 }

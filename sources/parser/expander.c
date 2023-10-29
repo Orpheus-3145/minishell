@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/28 01:49:19 by fra           #+#    #+#                 */
-/*   Updated: 2023/09/16 23:26:04 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:05:30 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ char	*expand_vars(char *input, t_env **env_vars, int exit_status)
 			end++;
 		var_name = ft_substr(input, i, end - i);
 		var_value = get_var_value(env_vars, var_name, exit_status);
-		ft_free(var_name);
+		free(var_name);
 		if (var_value == NULL)
 			return (ft_free(input));
 		input = ft_insert_str(input, var_value, i, end);
 		i += ft_strlen(var_value) - 1;
-		ft_free(var_value);
+		free(var_value);
 	}
 	return (input);
 }
@@ -79,7 +79,7 @@ char	*expand_tilde(char *str, t_env **env_vars)
 					return (ft_free(str));
 				str = ft_insert_str(str, home_var, i, i);
 				i += ft_strlen(home_var) - 1;
-				ft_free(home_var);
+				free(home_var);
 			}
 		}
 	}
@@ -103,7 +103,7 @@ char	*expand_pid(char *input)
 					return (ft_free(input));
 				input = ft_insert_str(input, char_pid, i, i + 1);
 				i += ft_strlen(char_pid) - 1;
-				ft_free(char_pid);
+				free(char_pid);
 				if (input == NULL)
 					return (NULL);
 			}
@@ -127,7 +127,7 @@ t_cmd_status	expander(char **input, t_env **env_vars, int stat, bool check)
 		return (CMD_MEM_ERR);
 	if (check && (check_sintax(tmp_exp) == false))
 	{
-		ft_free(tmp_exp);
+		free(tmp_exp);
 		return (CMD_SIN_ERR);
 	}
 	else

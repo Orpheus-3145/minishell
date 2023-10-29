@@ -6,7 +6,7 @@
 /*   By: faru <faru@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:15:31 by faru          #+#    #+#                 */
-/*   Updated: 2023/07/17 22:13:59 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_cmd_status	handle_here_doc(char *cmd, uint32_t *cnt, t_var *mini)
 		if (del == NULL)
 			return (CMD_MEM_ERR);
 		status = fork_here_doc(*cnt, del, mini);
-		ft_free(del);
+		free(del);
 		if ((status != CMD_OK) && (status != CMD_CTRL_D))
 			break ;
 		del_pos = find_next_eof_pos(cmd, del_pos);
@@ -138,7 +138,7 @@ bool	remove_here_docs(char *here_doc_path)
 			if (file_name == NULL)
 				return (false);
 			success = unlink(file_name) == 0;
-			ft_free(file_name);
+			free(file_name);
 		}
 		entry = readdir(dir);
 	}
