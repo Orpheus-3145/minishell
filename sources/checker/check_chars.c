@@ -6,11 +6,11 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 01:54:31 by fra           #+#    #+#                 */
-/*   Updated: 2023/07/02 21:00:49 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 bool	is_quote(char to_check)
 {

@@ -6,13 +6,12 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:06:12 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:02:03 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:58:58 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
-# include "minishell/minishell.h"
 
 // command.c
 uint32_t		n_cmds(char *string);

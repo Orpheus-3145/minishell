@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:05:32 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 13:12:21 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 int	ft_check_if_digits(char *str)
 {
@@ -88,12 +88,12 @@ void	ft_add_to_env(t_var *mini, char *key, char *value)
 
 	m_key = ft_strdup(key);
 	if (!m_key)
-		malloc_protect(mini);
+		kill_program(mini);
 	m_value = ft_strdup(value);
 	if (!m_value)
 	{
 		free(m_key);
-		malloc_protect(mini);
+		kill_program(mini);
 	}
 	new_node = ft_new_node(m_key, m_value);
 	if (mini->env_list)

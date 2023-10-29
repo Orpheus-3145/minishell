@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:05:32 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 14:48:19 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	ft_set_shlvl(t_var *mini)
 {

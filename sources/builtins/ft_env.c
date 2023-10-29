@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:30:00 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 14:16:42 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 17:31:56 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	ft_print_env(char **arr, int fd_out)
 {
@@ -51,7 +51,7 @@ char	**ft_list_to_arr(t_var *mini, t_env *env_list)
 		return (NULL);
 	arr = malloc(sizeof(char *) * (size + 1));
 	if (!arr)
-		malloc_protect(mini);
+		kill_program(mini);
 	while (i < size)
 	{
 		if (env_list->value)
@@ -74,7 +74,7 @@ int	ft_env(t_var *mini, char **args, int fd_out)
 	if (!mini->env_arr)
 		return (EXIT_FAILURE);
 	ft_print_env(mini->env_arr, fd_out);
-	ft_free_strings(mini->env_arr);
+	ft_free_double((void **) mini->env_arr, -1);
 	mini->env_arr = NULL;
 	return (EXIT_SUCCESS);
 }

@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 11:57:18 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 12:40:29 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 int	ft_cd_to_homedir(t_var *mini, char *cwd)
 {
@@ -102,7 +102,7 @@ void	ft_update_env_var(t_var *mini, t_env **env_list, \
 		free(env->value);
 		env->value = ft_strdup(new_env);
 		if (!env->value)
-			malloc_protect(mini);
+			kill_program(mini);
 	}
 	else
 		ft_add_to_env(mini, which_env, new_env);

@@ -6,11 +6,11 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:39:02 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 uint32_t	count_words(t_list *tokens)
 {

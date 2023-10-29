@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   env_utils.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:06:50 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/09/21 12:36:02 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 int	ft_find_first_equals(char *env)
 {
@@ -67,7 +67,7 @@ int	ft_find_data_if_no_pos(t_var *mini, char *envp, char **key, char **value)
 {
 	*key = ft_substr(envp, 0, ft_strlen(envp));
 	if (!*key)
-		malloc_protect(mini);
+		kill_program(mini);
 	if (ft_check_key(*key, ""))
 		return (free(*key), EXIT_FAILURE);
 	*value = NULL;
@@ -83,14 +83,14 @@ t_env	*ft_create_node(t_var *mini, char *envp, int pos)
 	{
 		key = ft_substr(envp, 0, pos);
 		if (!key)
-			malloc_protect(mini);
+			kill_program(mini);
 		if (ft_check_key(key, ""))
 			return (free(key), NULL);
 		value = ft_substr(envp, pos + 1, ft_strlen(envp));
 		if (!value)
 		{
 			free(key);
-			malloc_protect(mini);
+			kill_program(mini);
 		}
 	}
 	else

@@ -6,11 +6,11 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/04 02:32:32 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:08:44 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 17:02:13 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 int	*g_exit_code;
 
@@ -32,10 +32,8 @@ void	main_loop(t_var *mini)
 	{
 		input = NULL;
 		status = aquire_input(&input, mini);
-		if ((status == CMD_MEM_ERR) || 
-			(status == CMD_FILE_ERR) ||
-			(status == CMD_PROC_ERR))
-			malloc_protect(mini);
+		if ((status == CMD_MEM_ERR) || (status == CMD_FILE_ERR) || (status == CMD_PROC_ERR))
+			kill_program(mini);
 		else if (status == CMD_CTRL_D)
 		{
 			exit_shell(input);
@@ -55,9 +53,10 @@ void	main_loop(t_var *mini)
 
 void	set_up_struct(t_var **mini, char **envp)
 {
+	init_sig_handle(SIG_STD_HANDLE);
 	*mini = ft_calloc(1, sizeof(t_var));
 	if (*mini == NULL)
-		malloc_protect(*mini);
+		kill_program(*mini);
 	(*mini)->cmd_data = NULL;
 	(*mini)->n_cmd = 0;
 	(*mini)->env_list = NULL;
@@ -67,7 +66,9 @@ void	set_up_struct(t_var **mini, char **envp)
 		make_env_list(envp, *mini);
 	(*mini)->hd_path = getcwd(NULL, 0);
 	if ((*mini)->hd_path == NULL)
-		malloc_protect(*mini);
+		kill_program(*mini);
+	else
+		ft_set_shlvl(*mini);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -76,11 +77,9 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argv;
 	if (argc > 1)
-		ft_putstr_fd("unnecessary argoment(s) provided\n", 2);
-	init_sig_handle(SIG_STD_HANDLE);
+		ft_putstr_fd(MSG_UNN_ARGUMENT, 2);
 	set_up_struct(&mini, envp);
 	g_exit_code = &mini->status;
-	ft_set_shlvl(mini);
 	main_loop(mini);
 	ft_free_all(mini);
 	return (mini->status);

@@ -6,26 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:06:07 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/10/29 16:03:38 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
-
-// void	ft_print_array(char **arr)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!arr)
-// 		return ;
-// 	while (arr[i])
-// 	{
-// 		ft_putstr_fd(arr[i], 1);
-// 		ft_putstr_fd("\n", 1);
-// 		i++;
-// 	}
-// }
+#include "main/minishell.h"
 
 void	ft_update_shell(t_env **env_list)
 {
@@ -84,10 +69,10 @@ void	make_env_list(char **envp, t_var *mini)
 	i = 1;
 	mini->env_list = ft_calloc(sizeof(t_env *), 1);
 	if (!mini->env_list)
-		malloc_protect(mini);
+		kill_program(mini);
 	head = ft_envp_node(mini, envp[0]);
 	if (!head)
-		malloc_protect(mini);
+		kill_program(mini);
 	node = head;
 	while (envp[i])
 	{
@@ -95,7 +80,7 @@ void	make_env_list(char **envp, t_var *mini)
 		if (!node->next)
 		{
 			ft_free_prev(head);
-			malloc_protect(mini);
+			kill_program(mini);
 		}
 		node = node->next;
 		i++;

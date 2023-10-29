@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:17:37 by fra           #+#    #+#                 */
-/*   Updated: 2023/07/18 22:50:19 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 17:31:44 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define ERROR_HANDLING_H
 
 //Free Functions for Data Types --> error_handling/free.c
-int		ft_free_strings(char **arr);
-
 int		ft_free_pipes(int **pipes, int size);
 
 int		ft_free_cmd_struct(t_cmd *cmd);
@@ -31,7 +29,7 @@ void	ft_free_all(t_var *mini);
 
 void	ft_error_msg(char *str);
 
-int		malloc_protect(t_var *mini);
+int		kill_program(t_var *mini);
 
 void	ft_write_error(int fd, char *func, char *str, char *msg);
 

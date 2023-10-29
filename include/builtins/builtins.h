@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:16:54 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 15:52:07 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:25:08 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_find_env_val(t_env **env_list, char *env_var);
 
 // Pwd 
 // ft_pwd.c
-char	*ft_get_pwd(t_var *mini);
+// char	*ft_get_pwd(t_var *mini);
 
 int		ft_pwd(t_var *mini, char **args, int fd_out);
 

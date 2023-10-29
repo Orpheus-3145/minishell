@@ -12,7 +12,6 @@
 
 #ifndef CHECKER_H
 # define CHECKER_H
-# include "minishell/minishell.h"
 
 // check_valid.c
 bool	is_valid_symbol(char *string, uint32_t pos_to_check, char check);

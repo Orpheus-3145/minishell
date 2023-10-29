@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.h                                            :+:    :+:            */
+/*   main.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/07/01 02:12:06 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:59:41 by fra           ########   odam.nl         */
+/*   Created: 2023/07/01 02:00:55 by fra           #+#    #+#                 */
+/*   Updated: 2023/10/29 16:58:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef MAIN_H
+# define MAIN_H
 
-// utils.c
-void	move_chars(char *dest, char *src);
+// main.c
+void	set_up_struct(t_var **mini, char **envp);
 
-char	*remove_quotes(char *to_clear, bool free_string);
+void	ft_set_home(t_var *mini);
 
-char	*create_file_name(const char *fix_part, char *path_file, int32_t cnt);
+void	exit_shell(char *input);
+
+void	main_loop(t_var	*main_var);
+
+//signals.h
+void	init_sig_handle(t_sig_mode mode);
+
+void	signal_handler(int signum);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 13:54:26 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/18 22:50:30 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	ft_exec(t_var *mini)
 {
@@ -20,9 +20,9 @@ void	ft_exec(t_var *mini)
 	else
 		mini->status = multiple_cmds(mini);
 	if (mini->status == 137)
-		malloc_protect(mini);
+		kill_program(mini);
 	else if (remove_here_docs(mini->hd_path) == false)
-		malloc_protect(mini);
+		kill_program(mini);
 	ft_free_cmd_arr(mini);
 	mini->cmd_data = NULL;
 	mini->n_cmd = 0;

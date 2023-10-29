@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:01:18 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 12:28:19 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 int	ft_check_if_key_exists(t_env *env_list, char *key)
 {
@@ -42,7 +42,7 @@ void	ft_replace_value(t_var *mini, char *key, char *new_value)
 		free(list->value);
 		list->value = new_value;
 		if (!list->value)
-			malloc_protect(mini);
+			kill_program(mini);
 	}
 }
 
@@ -64,7 +64,7 @@ void	ft_append_value(t_var *mini, char *key, char *to_add)
 		new_value = ft_strjoin(list->value, to_add, "", 0);
 		free(to_add);
 		if (!new_value)
-			malloc_protect(mini);
+			kill_program(mini);
 		free(list->value);
 		list->value = new_value;
 	}
@@ -81,6 +81,6 @@ char	*ft_find_value(t_var *mini, char *arg, size_t op_type, size_t op_pos)
 	else
 		value = ft_substr(arg, op_pos + 1, ft_strlen(arg));
 	if (!value)
-		malloc_protect(mini);
+		kill_program(mini);
 	return (value);
 }

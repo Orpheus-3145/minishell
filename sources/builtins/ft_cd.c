@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:02:36 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/07/17 12:30:31 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	ft_get_cwd_fails(t_var *mini, char *pwd, char *arg)
 {
@@ -18,7 +18,7 @@ void	ft_get_cwd_fails(t_var *mini, char *pwd, char *arg)
 
 	new_pwd = ft_strjoin(pwd, arg, "/", 0);
 	if (!new_pwd)
-		malloc_protect(mini);
+		kill_program(mini);
 	ft_update_env_var(mini, mini->env_list, "PWD", new_pwd);
 	free(new_pwd);
 }

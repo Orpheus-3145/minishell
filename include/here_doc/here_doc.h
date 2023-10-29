@@ -6,13 +6,12 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:23:12 by fra           #+#    #+#                 */
-/*   Updated: 2023/09/21 13:00:06 by faru          ########   odam.nl         */
+/*   Updated: 2023/10/29 16:58:51 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HERE_DOC_H
 # define HERE_DOC_H
-# include "minishell/minishell.h"
 
 // here_doc_handle.c
 int32_t			find_next_eof_pos(char *cmd, uint32_t start_pos);

@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:14:36 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 17:30:35 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	ft_set_to_null(t_var *mini)
 {
@@ -28,20 +28,20 @@ void	ft_free_all(t_var *mini)
 	if (mini->env_list)
 		ft_free_env_list(mini);
 	if (mini->paths)
-		ft_free_strings(mini->paths);
+		ft_free_double((void **) mini->paths, -1);
 	if (mini->env_arr)
-		ft_free_strings(mini->env_arr);
+		ft_free_double((void **) mini->env_arr, -1);
 	free(mini->hd_path);
 	ft_set_to_null(mini);
 }
 
 void	ft_error_msg(char *str)
 {
-	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(MSG_EMPTY, 2);
 	perror(str);
 }
 
-int	malloc_protect(t_var *mini)
+int	kill_program(t_var *mini)
 {
 	remove_here_docs(mini->hd_path);
 	ft_free_all(mini);
@@ -52,7 +52,7 @@ int	malloc_protect(t_var *mini)
 
 void	ft_write_error(int fd, char *func, char *str, char *msg)
 {
-	ft_putstr_fd("minishell: ", fd);
+	ft_putstr_fd(MSG_EMPTY, fd);
 	ft_putstr_fd(func, fd);
 	ft_putstr_fd(": ", fd);
 	if (str)

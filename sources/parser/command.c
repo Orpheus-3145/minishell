@@ -6,11 +6,11 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 01:18:26 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:08:32 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 17:09:48 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 uint32_t	n_cmds(char *string)
 {
@@ -36,8 +36,8 @@ char	**split_into_cmds(char *input)
 	uint32_t	len;
 
 	cmds = ft_calloc(n_cmds(input) + 1, sizeof(char *));
-	if (! cmds)
-		return (NULL);
+	if (cmds == NULL)
+		return (ft_free(input));
 	i = 0;
 	j = 0;
 	while (true)
@@ -47,7 +47,7 @@ char	**split_into_cmds(char *input)
 			len++;
 		cmds[i] = ft_substr(input + j, 0, len);
 		if (cmds[i] == NULL)
-			return (ft_free_double((void **) cmds, i));
+			return (ft_free(input), ft_free_double((void **) cmds, i + 1));
 		i++;
 		j += len + (input[j + len] != 0);
 		if (input[j] == '\0')
@@ -95,11 +95,11 @@ void	run_cmd(char *input, t_var *mini)
 	{
 		ft_putstr_fd(MSG_SINTAX_ERROR, 2);
 		if (remove_here_docs(mini->hd_path) == false)
-			malloc_protect(mini);
+			kill_program(mini);
 		ft_free_cmd_arr(mini);
 	}
 	else if (status == CMD_MEM_ERR)
-		malloc_protect(mini);
+		kill_program(mini);
 	else
 		ft_exec(mini);
 }

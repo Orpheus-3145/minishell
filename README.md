@@ -7,18 +7,18 @@ Minishell was a project developed by my team-partner [ys_zm](https://github.com/
 # Overview
 See the [subject](https://cdn.intra.42.fr/pdf/pdf/99970/en.subject.pdf) of the project for the specific guidelines, but substantially minishell behaves as Bash; here are listed the main semplifications.
 
-## 1. sintax
+## 1. Sintax
 - Unclosed quotes are treated as sintax-errors;
 - characters **'\\'** and **';'** are not considered meta-characters and have no consequence;
 - operations **&&** and **||** are not implemented.
 
-## 2. signals
-the signals interally implemented are:
+## 2. Signals
+The signals interally implemented are:
 - SIG_INT (CTRL C)  	-- interrupts the running command prints an empty prompt;
 - SIG_QUIT (CTRL \\)  	-- default behaviour set as *ignore*
 - EOF (CTRL D)      	-- exits the shell.
 
-## 3. builtins
+## 3. Builtins
 Some commands was directly implemented in the shell at C level (a.k.a. builtins), the others are executed as usual looking for the executable inside the **$PATH** variable.
 The builtins are: (only the options inside the parenthesis are admitted)  
 - **echo** (only option -n);
@@ -29,7 +29,7 @@ The builtins are: (only the options inside the parenthesis are admitted)
 - **env** (no options or arguments);
 - **exit** (no options).
 
-## 4. redirections
+## 4. Redirections
 The IO redirections are treated as follows:
 - **<**   --  *single input redirection* ;
 - **>**   --  *single output redirection* ;

@@ -6,25 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 14:30:46 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/10/29 15:57:31 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 17:32:40 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
-
-int	ft_free_strings(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr && arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (EXIT_SUCCESS);
-}
+#include "main/minishell.h"
 
 int	ft_free_pipes(int **pipes, int size)
 {
@@ -43,11 +29,11 @@ int	ft_free_pipes(int **pipes, int size)
 int	ft_free_cmd_struct(t_cmd *cmd)
 {
 	if (cmd->full_cmd)
-		ft_free_strings(cmd->full_cmd);
+		ft_free_double((void **) cmd->full_cmd, -1);
 	if (cmd->n_redirect)
 		free(cmd->redirections);
 	if (cmd->files)
-		ft_free_strings(cmd->files);
+		ft_free_double((void **) cmd->files, -1);
 	return (EXIT_SUCCESS);
 }
 

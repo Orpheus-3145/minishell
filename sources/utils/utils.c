@@ -6,11 +6,11 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/20 19:09:49 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:04:14 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:22 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	move_chars(char *dest, char *src)
 {
@@ -68,11 +68,3 @@ char	*create_file_name(const char *fix_part, char *path_file, int32_t cnt)
 	free(char_cnt);
 	return (file_name);
 }
-
-// bool	is_actual_file(char *file_name)
-// {
-// 	if ((ft_strncmp(file_name, ".", 1) != 0) && (ft_strncmp(file_name, "..", 2) != 0))
-// 		return (true);
-// 	else
-// 		return (false);
-// }

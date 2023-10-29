@@ -6,11 +6,11 @@
 /*   By: yzaim <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 13:29:37 by yzaim         #+#    #+#                 */
-/*   Updated: 2023/09/21 12:25:58 by yzaim         ########   odam.nl         */
+/*   Updated: 2023/10/29 16:57:41 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 void	ft_find_error(t_var *mini, char *cmd)
 {
@@ -24,7 +24,7 @@ void	ft_find_error(t_var *mini, char *cmd)
 	{
 		cmd_path = ft_trip_join(mini->paths[i++], "/", cmd);
 		if (!cmd_path)
-			malloc_protect(mini);
+			kill_program(mini);
 		if (access(cmd_path, F_OK) == 0)
 		{
 			found = 1;
@@ -50,7 +50,7 @@ char	*check_env_paths(t_var *mini, char *cmd)
 	{
 		cmd_path = ft_trip_join(mini->paths[i], "/", cmd);
 		if (!cmd_path)
-			malloc_protect(mini);
+			kill_program(mini);
 		if (!access(cmd_path, X_OK))
 			return (cmd_path);
 		free(cmd_path);

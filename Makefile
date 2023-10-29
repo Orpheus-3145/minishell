@@ -6,7 +6,7 @@
 #    By: fra <fra@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/10/28 21:36:34 by fra           #+#    #+#                  #
-#    Updated: 2023/10/28 22:33:35 by fra           ########   odam.nl          #
+#    Updated: 2023/10/29 16:14:32 by fra           ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all, clean, fclean, re
-
 
 .DEFAULT_GOAL:=all

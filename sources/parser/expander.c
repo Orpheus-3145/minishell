@@ -6,11 +6,11 @@
 /*   By: fra <fra@student.42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/28 01:49:19 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:05:30 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 17:07:10 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell/minishell.h"
+#include "main/minishell.h"
 
 char	*get_var_value(t_env **env_vars, char *var_name, int exit_status)
 {
@@ -117,7 +117,7 @@ t_cmd_status	expander(char **input, t_env **env_vars, int stat, bool check)
 	char	*tmp_exp;
 
 	tmp_exp = expand_tilde(*input, env_vars);
-	if (*input == NULL)
+	if (tmp_exp == NULL)
 		return (CMD_MEM_ERR);
 	tmp_exp = expand_pid(tmp_exp);
 	if (tmp_exp == NULL)

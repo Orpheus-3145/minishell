@@ -6,7 +6,7 @@
 /*   By: fra <fra@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/01 02:17:18 by fra           #+#    #+#                 */
-/*   Updated: 2023/10/29 16:03:46 by fra           ########   odam.nl         */
+/*   Updated: 2023/10/29 16:18:38 by fra           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int		ft_find_data_if_no_pos(t_var *mini, char *envp, char **key, char **v);
 t_env	*ft_create_node(t_var *mini, char *envp, int pos);
 
 // env/env_parsing.c
-// void	ft_print_array(char **arr);
-
 void	ft_free_prev(t_env *head);
 
 void	ft_update_shell(t_env **env_list);

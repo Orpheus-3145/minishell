@@ -12,7 +12,6 @@
 
 #ifndef LEXER_H
 # define LEXER_H
-# include "minishell/minishell.h"
 
 //tokenizer.c
 int32_t			isolate_word(char *input, char **new_word);
